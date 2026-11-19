@@ -102,7 +102,7 @@
     .companies { padding: 32px 0; border-bottom: 1px solid var(--border); background: #fff; }
     .companies-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
     .companies-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; line-height: 1.5; }
-    .company-logos { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .company-logos { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .company-badge {
       display: inline-flex;
       align-items: center;
@@ -122,7 +122,7 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(7, 48, 66, 0.08);
     }
-    .company-icon {
+    .company-mark {
       width: 28px;
       height: 28px;
       border-radius: 7px;
@@ -154,7 +154,7 @@
     .project-banner { height: 144px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
     .project-banner-top { display: flex; justify-content: space-between; align-items: center; }
     .project-banner span { font-size: 11px; background: rgba(61, 220, 132, 0.2); color: var(--green); padding: 4px 10px; border-radius: 20px; width: fit-content; font-weight: 600; }
-    .project-banner-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, 0.1); display: grid; place-items: center; color: var(--green); }
+    .project-banner-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, 0.1); display: grid; place-items: center; }
     .project-banner h4 { font-size: 20px; }
     .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .project-body p { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
@@ -319,43 +319,73 @@
     </div>
   </section>
 
+  <!-- Brand-Matched Company Logos Strip -->
   <div class="companies">
     <div class="container companies-inner">
       <div class="companies-title">Companies &amp; Products<br>I've Worked With</div>
       <div class="company-logos">
-        <a href="#portfolio" class="company-badge" title="Fleethand — B2B Logistics Platform">
-          <span class="company-icon" style="background: rgba(14, 165, 233, 0.14); color: #0284c7;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        <!-- Fleethand: Signature Royal Blue #0066FF + White circular radar/ring emblem -->
+        <a href="https://www.fleethand.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="Fleethand — Fleet Management & Telematics">
+          <span class="company-mark" style="background: #0066FF;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="7.5" stroke="#FFFFFF" stroke-width="2.6"/>
+              <circle cx="12" cy="12" r="2.6" fill="#FFFFFF"/>
+            </svg>
           </span>
           Fleethand
         </a>
-        <a href="#portfolio" class="company-badge" title="Godel Technologies — Software Engineering">
-          <span class="company-icon" style="background: rgba(234, 88, 12, 0.14); color: #ea580c;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+
+        <!-- Godel Technologies: Deep Navy/Teal #0E2A47 + Cyan/Teal geometric 'G' mark -->
+        <a href="https://www.godeltech.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="Godel Technologies — Software Engineering">
+          <span class="company-mark" style="background: #0E2A47;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M16.5 8.5A6 6 0 1 0 17.5 14H12.5V11.5H20V14.5A8.5 8.5 0 1 1 18.2 6.8L16.5 8.5Z" fill="#00D4B6"/>
+            </svg>
           </span>
           Godel Technologies
         </a>
-        <a href="https://play.google.com/store/apps/details?id=com.circleloop" target="_blank" rel="noopener noreferrer" class="company-badge" title="CircleLoop — Cloud Telecom System">
-          <span class="company-icon" style="background: rgba(139, 92, 246, 0.14); color: #7c3aed;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+
+        <!-- CircleLoop: Signature Purple #7C3AED + Double Interlocking Loop Rings -->
+        <a href="https://www.circleloop.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="CircleLoop — Cloud Business Phone System">
+          <span class="company-mark" style="background: #7C3AED;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="9.5" cy="12" r="5" stroke="#FFFFFF" stroke-width="2.3"/>
+              <circle cx="14.5" cy="12" r="5" stroke="#C4B5FD" stroke-width="2.3"/>
+            </svg>
           </span>
           CircleLoop
         </a>
-        <a href="#portfolio" class="company-badge" title="iTechArt — Mobile & Healthcare IoT">
-          <span class="company-icon" style="background: rgba(225, 29, 72, 0.14); color: #e11d48;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+
+        <!-- iTechArt: Signature Crimson Red #E31C25 + White 'i' & geometric dot mark -->
+        <a href="https://www.itechart.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="iTechArt Group — Custom Software Development">
+          <span class="company-mark" style="background: #E31C25;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="6.5" r="2" fill="#FFFFFF"/>
+              <rect x="10.2" y="10.2" width="3.6" height="8.5" rx="1" fill="#FFFFFF"/>
+              <circle cx="16.5" cy="16.7" r="1.8" fill="#FCA5A5"/>
+            </svg>
           </span>
           iTechArt
         </a>
-        <a href="https://play.google.com/store/apps/details?id=com.piq.golfapp" target="_blank" rel="noopener noreferrer" class="company-badge" title="Mobitee — Sports Analytics & Wearables">
-          <span class="company-icon" style="background: rgba(16, 185, 129, 0.14); color: #059669;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+
+        <!-- Mobitee / PIQ: Signature PIQ Sport Green #00B140 / Black + PIQ dynamic angle emblem -->
+        <a href="https://play.google.com/store/apps/details?id=com.piq.golfapp" target="_blank" rel="noopener noreferrer" class="company-badge" title="Mobitee & PIQ Golf — BLE Sports Analytics">
+          <span class="company-mark" style="background: #111827;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M5 17L10.5 7H14.5L9 17H5Z" fill="#00E676"/>
+              <circle cx="16.5" cy="14.5" r="2.8" fill="#FFFFFF"/>
+            </svg>
           </span>
-          Mobitee
+          Mobitee / PIQ
         </a>
-        <a href="https://play.google.com/store/apps/details?id=com.elitas.masterlink" target="_blank" rel="noopener noreferrer" class="company-badge" title="Altoros — Industrial BLE Solutions">
-          <span class="company-icon" style="background: rgba(7, 48, 66, 0.12); color: #073042;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+
+        <!-- Altoros: Signature Red Hexagon #D9272E with stylized white 'A' -->
+        <a href="https://www.altoros.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="Altoros — Cloud & Industrial IoT Engineering">
+          <span class="company-mark" style="background: #D9272E;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" stroke="#FFFFFF" stroke-width="1.8" fill="none"/>
+              <path d="M9.2 15.5L12 8.2L14.8 15.5M10.1 13.4H13.9" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </span>
           Altoros
         </a>
@@ -437,8 +467,11 @@
           <div class="project-banner">
             <div class="project-banner-top">
               <span>B2B Logistics &bull; Fleethand</span>
-              <div class="project-banner-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <div class="project-banner-icon" style="background: #0066FF;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="7.5" stroke="#FFFFFF" stroke-width="2.6"/>
+                  <circle cx="12" cy="12" r="2.6" fill="#FFFFFF"/>
+                </svg>
               </div>
             </div>
             <h4>Fleethand Driver</h4>
@@ -452,8 +485,11 @@
           <div class="project-banner">
             <div class="project-banner-top">
               <span>Cloud Telecom &bull; Godel</span>
-              <div class="project-banner-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div class="project-banner-icon" style="background: #7C3AED;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="9.5" cy="12" r="5" stroke="#FFFFFF" stroke-width="2.3"/>
+                  <circle cx="14.5" cy="12" r="5" stroke="#C4B5FD" stroke-width="2.3"/>
+                </svg>
               </div>
             </div>
             <h4>CircleLoop</h4>
@@ -467,8 +503,11 @@
           <div class="project-banner">
             <div class="project-banner-top">
               <span>Healthcare IoT &bull; iTechArt</span>
-              <div class="project-banner-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <div class="project-banner-icon" style="background: #E31C25;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="6.5" r="2" fill="#FFFFFF"/>
+                  <rect x="10.2" y="10.2" width="3.6" height="8.5" rx="1" fill="#FFFFFF"/>
+                </svg>
               </div>
             </div>
             <h4>DoseSmart</h4>
@@ -482,8 +521,11 @@
           <div class="project-banner">
             <div class="project-banner-top">
               <span>BLE Sports Analytics &bull; Mobitee</span>
-              <div class="project-banner-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div class="project-banner-icon" style="background: #111827;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 17L10.5 7H14.5L9 17H5Z" fill="#00E676"/>
+                  <circle cx="16.5" cy="14.5" r="2.8" fill="#FFFFFF"/>
+                </svg>
               </div>
             </div>
             <h4>PIQ Golf</h4>
@@ -497,8 +539,11 @@
           <div class="project-banner">
             <div class="project-banner-top">
               <span>Industrial IoT &bull; Altoros</span>
-              <div class="project-banner-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 7 17 17 12 22 12 2 17 7 7 17"/></svg>
+              <div class="project-banner-icon" style="background: #D9272E;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" stroke="#FFFFFF" stroke-width="1.8" fill="none"/>
+                  <path d="M9.2 15.5L12 8.2L14.8 15.5M10.1 13.4H13.9" stroke="#FFFFFF" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </div>
             </div>
             <h4>Masterlink</h4>
@@ -512,8 +557,11 @@
           <div class="project-banner">
             <div class="project-banner-top">
               <span>Entertainment App &bull; iTechArt</span>
-              <div class="project-banner-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+              <div class="project-banner-icon" style="background: #E31C25;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="6.5" r="2" fill="#FFFFFF"/>
+                  <rect x="10.2" y="10.2" width="3.6" height="8.5" rx="1" fill="#FFFFFF"/>
+                </svg>
               </div>
             </div>
             <h4>MovieDb</h4>
