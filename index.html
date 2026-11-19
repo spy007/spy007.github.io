@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kirill Ivanov — Senior Android Developer</title>
+  <title>Kirill Ivanov — Android Developer</title>
   <style>
     :root {
       --green: #3DDC84;
@@ -53,13 +53,33 @@
     .btn-outline-dark { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.3); }
     .btn-outline-dark:hover { border-color: var(--green); color: var(--green); }
 
-    /* Hero */
-    .hero { background: var(--bg-light); padding: 70px 0 60px; }
-    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+    /* Hero with Seamless Blend */
+    .hero {
+      background: linear-gradient(90deg, #ffffff 0%, #f6f8fa 55%, #eef3f7 100%);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: stretch;
+      min-height: 560px;
+    }
+    .hero-content {
+      padding: 64px 24px 60px 20px;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: var(--navy); text-transform: uppercase; margin-bottom: 14px; }
     .hero h1 { font-size: 46px; line-height: 1.15; font-weight: 800; color: var(--navy); margin-bottom: 18px; }
     .hero h1 span { color: var(--green-dark); }
-    .hero p { color: var(--text-muted); font-size: 16px; max-width: 520px; margin-bottom: 24px; }
+    .hero p { color: var(--text-muted); font-size: 16px; max-width: 530px; margin-bottom: 24px; }
 
     /* Tech Stack Strip in Hero */
     .tech-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
@@ -73,26 +93,53 @@
     }
     .tech-pill:hover { border-color: var(--green); transform: translateY(-1px); }
 
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 42px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding-top: 24px; border-top: 1px solid var(--border); }
     .stat-num { font-size: 24px; font-weight: 800; color: var(--navy); }
     .stat-label { font-size: 12px; color: var(--text-muted); }
-    .hero-photo-wrap { position: relative; text-align: center; }
-    .hero-photo { width: 100%; max-width: 390px; aspect-ratio: 1 / 1; border-radius: 20px; box-shadow: 0 20px 40px rgba(7, 48, 66, 0.15); border: 4px solid #fff; object-fit: cover; background: #cbd5e1; }
+
+    /* Seamless Blended Photo Column */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.65) 14%, #000 32%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.65) 14%, #000 32%);
+    }
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, #f8fafc 0%, rgba(248, 250, 252, 0.72) 15%, rgba(248, 250, 252, 0) 38%);
+      pointer-events: none;
+      z-index: 1;
+    }
     .float-badge {
       position: absolute;
-      bottom: 20px;
-      left: 10px;
-      background: var(--navy);
+      bottom: 24px;
+      right: 24px;
+      z-index: 3;
+      background: rgba(7, 48, 66, 0.94);
+      backdrop-filter: blur(6px);
       color: #fff;
       padding: 12px 16px;
       border-radius: 12px;
       font-size: 13px;
       text-align: left;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.22);
       cursor: pointer;
       transition: transform 0.2s, background 0.2s;
-      border: 1px solid rgba(61, 220, 132, 0.3);
+      border: 1px solid rgba(61, 220, 132, 0.35);
     }
     .float-badge:hover { transform: translateY(-2px); background: var(--navy-light); }
     .float-badge strong { color: var(--green); display: flex; align-items: center; gap: 7px; }
@@ -139,7 +186,7 @@
 
     /* Services */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .service-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: 0.2s; }
+    .service-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: 0.2s; box-shadow: 0 2px 8px rgba(7, 48, 66, 0.03); }
     .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(7, 48, 66, 0.08); border-color: var(--green); }
     .s-icon { width: 50px; height: 50px; border-radius: 12px; background: rgba(61, 220, 132, 0.16); color: var(--navy); display: grid; place-items: center; margin-bottom: 18px; }
     .service-card h3 { font-size: 18px; color: var(--navy); margin-bottom: 10px; }
@@ -149,7 +196,7 @@
     /* Portfolio */
     .portfolio-bg { background: var(--bg-light); }
     .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .project-card { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; transition: 0.2s; }
+    .project-card { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; transition: 0.2s; box-shadow: 0 2px 8px rgba(7, 48, 66, 0.03); }
     .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(7, 48, 66, 0.08); }
     .project-banner { height: 144px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
     .project-banner-top { display: flex; justify-content: space-between; align-items: center; }
@@ -163,7 +210,7 @@
 
     /* Process */
     .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .step-card { padding: 24px; border-radius: 14px; border: 1px solid var(--border); transition: 0.2s; }
+    .step-card { padding: 24px; border-radius: 14px; border: 1px solid var(--border); transition: 0.2s; background: #fff; }
     .step-card:hover { border-color: var(--green); }
     .step-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
     .step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: var(--green); font-weight: 800; display: grid; place-items: center; }
@@ -197,7 +244,18 @@
     .contact-item a { color: var(--navy); font-weight: 600; text-decoration: underline; }
 
     @media (max-width: 900px) {
-      .hero-grid, .services-grid, .projects-grid, .process-grid, .test-grid { grid-template-columns: 1fr; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-content { padding: 48px 20px 32px; }
+      .hero-photo {
+        min-height: 360px;
+        max-height: 440px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 18%, #000 35%);
+        mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 18%, #000 35%);
+      }
+      .hero-visual::before {
+        background: linear-gradient(180deg, #f8fafc 0%, rgba(248, 250, 252, 0.7) 18%, rgba(248, 250, 252, 0) 40%);
+      }
+      .services-grid, .projects-grid, .process-grid, .test-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .hero h1 { font-size: 34px; }
     }
@@ -220,10 +278,6 @@
         <a href="https://www.linkedin.com/in/kiryl-ivanou/" target="_blank" rel="noopener noreferrer">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
           LinkedIn
-        </a>
-        <a href="https://github.com/spy007" target="_blank" rel="noopener noreferrer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-          GitHub
         </a>
         <a href="mailto:kiryl.ivanov@gmail.com">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -260,12 +314,12 @@
     </div>
   </header>
 
-  <section class="hero" id="about">
-    <div class="container hero-grid">
-      <div>
+  <section class="hero" id="about" style="padding: 0;">
+    <div class="hero-inner">
+      <div class="hero-content">
         <div class="eyebrow">KOTLIN &bull; JETPACK COMPOSE &bull; CLEAN ARCHITECTURE</div>
         <h1>Turning Your App Ideas <span>Into Reality</span></h1>
-        <p>I'm Kirill Ivanov, a Senior Android Developer based in Vilnius, Lithuania with 6+ years of commercial experience building high-load mobile apps across logistics, cloud telecom, and BLE/IoT domains.</p>
+        <p>Hi, I'm Kirill Ivanov — an Android Developer based in Vilnius with 6+ years of experience building reliable, production-grade mobile applications. I help teams turn complex requirements into clean, responsive Kotlin apps across logistics, cloud telecom, and BLE/IoT ecosystems.</p>
         
         <div class="tech-pills">
           <span class="tech-pill">
@@ -309,11 +363,12 @@
           <div><div class="stat-num">EU</div><div class="stat-label">Blue Card Holder</div></div>
         </div>
       </div>
-      <div class="hero-photo-wrap">
+
+      <div class="hero-visual">
         <img src="avatar.jpg" alt="Kirill Ivanov — Android Developer" class="hero-photo" />
         <button type="button" class="float-badge" onclick="openModal(event)" title="Click to get in touch">
           <strong><span class="status-dot"></span> Vilnius, Lithuania</strong>
-          Open to Senior Android Roles &amp; B2B
+          Open to Android Roles &amp; B2B
         </button>
       </div>
     </div>
@@ -324,7 +379,6 @@
     <div class="container companies-inner">
       <div class="companies-title">Companies &amp; Products<br>I've Worked With</div>
       <div class="company-logos">
-        <!-- Fleethand: Signature Royal Blue #0066FF + White circular radar/ring emblem -->
         <a href="https://www.fleethand.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="Fleethand — Fleet Management & Telematics">
           <span class="company-mark" style="background: #0066FF;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -335,7 +389,6 @@
           Fleethand
         </a>
 
-        <!-- Godel Technologies: Deep Navy/Teal #0E2A47 + Cyan/Teal geometric 'G' mark -->
         <a href="https://www.godeltech.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="Godel Technologies — Software Engineering">
           <span class="company-mark" style="background: #0E2A47;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -345,7 +398,6 @@
           Godel Technologies
         </a>
 
-        <!-- CircleLoop: Signature Purple #7C3AED + Double Interlocking Loop Rings -->
         <a href="https://www.circleloop.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="CircleLoop — Cloud Business Phone System">
           <span class="company-mark" style="background: #7C3AED;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -356,7 +408,6 @@
           CircleLoop
         </a>
 
-        <!-- iTechArt: Signature Crimson Red #E31C25 + White 'i' & geometric dot mark -->
         <a href="https://www.itechart.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="iTechArt Group — Custom Software Development">
           <span class="company-mark" style="background: #E31C25;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -368,7 +419,6 @@
           iTechArt
         </a>
 
-        <!-- Mobitee / PIQ: Signature PIQ Sport Green #00B140 / Black + PIQ dynamic angle emblem -->
         <a href="https://play.google.com/store/apps/details?id=com.piq.golfapp" target="_blank" rel="noopener noreferrer" class="company-badge" title="Mobitee & PIQ Golf — BLE Sports Analytics">
           <span class="company-mark" style="background: #111827;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -379,7 +429,6 @@
           Mobitee / PIQ
         </a>
 
-        <!-- Altoros: Signature Red Hexagon #D9272E with stylized white 'A' -->
         <a href="https://www.altoros.com" target="_blank" rel="noopener noreferrer" class="company-badge" title="Altoros — Cloud & Industrial IoT Engineering">
           <span class="company-mark" style="background: #D9272E;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -657,7 +706,7 @@
     <div class="container cta-inner">
       <div>
         <h2>Ready to Build Your Next Android App?</h2>
-        <p>Available for Senior Android Developer roles and B2B consulting in Vilnius or remote across the EU.</p>
+        <p>Available for Android Developer roles and B2B consulting in Vilnius or remote across the EU.</p>
       </div>
       <div style="display:flex; gap:12px; flex-wrap:wrap;">
         <button class="btn btn-green" onclick="openModal(event)">Hire Me Now &rarr;</button>
@@ -682,7 +731,6 @@
       <div class="contact-item"><strong>Email:</strong> <a href="mailto:kiryl.ivanov@gmail.com">kiryl.ivanov@gmail.com</a></div>
       <div class="contact-item"><strong>Phone / WhatsApp:</strong> <a href="tel:+37066368617">+370 663 68 617</a></div>
       <div class="contact-item"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kiryl-ivanou/" target="_blank" rel="noopener noreferrer">linkedin.com/in/kiryl-ivanou</a></div>
-      <div class="contact-item"><strong>GitHub:</strong> <a href="https://github.com/spy007" target="_blank" rel="noopener noreferrer">github.com/spy007</a></div>
       <div class="contact-item"><strong>Resume:</strong> <a href="cv.pdf" download="Kirill_Ivanov_Android_Developer_CV.pdf">Download CV (PDF)</a></div>
       <div class="contact-item"><strong>Location:</strong> Vilnius, Lithuania (EU Blue Card)</div>
     </div>
