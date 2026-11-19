@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kirill Ivanov — Senior Android Developer</title>
+  <style>
+    :root {
+      --green: #3DDC84;
+      --green-dark: #2bb669;
+      --navy: #073042;
+      --navy-light: #0d435b;
+      --bg-light: #f6f8fa;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text-main);
+      background: #fff;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+    /* Top Bar */
+    .topbar { background: var(--navy); color: #fff; font-size: 13px; padding: 10px 0; }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .topbar-left { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .topbar-cta { background: var(--green); color: var(--navy); font-weight: 700; padding: 4px 12px; border-radius: 4px; font-size: 12px; }
+    .topbar-right { display: flex; gap: 14px; color: #cbd5e1; }
+    .topbar-right a:hover { color: var(--green); }
+
+    /* Header */
+    header { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .nav { display: flex; justify-content: space-between; align-items: center; height: 74px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--navy); }
+    .logo-badge { width: 38px; height: 38px; background: var(--green); color: var(--navy); border-radius: 50%; display: grid; place-items: center; font-weight: 800; }
+    .logo span { display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 28px; font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--navy); }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; border: none; transition: 0.2s; }
+    .btn-green { background: var(--green); color: var(--navy); }
+    .btn-green:hover { background: var(--green-dark); color: #fff; }
+    .btn-outline { background: #fff; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--navy); }
+
+    /* Hero */
+    .hero { background: var(--bg-light); padding: 70px 0 60px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; color: var(--navy); text-transform: uppercase; margin-bottom: 14px; }
+    .hero h1 { font-size: 46px; line-height: 1.15; font-weight: 800; color: var(--navy); margin-bottom: 18px; }
+    .hero h1 span { color: var(--green-dark); }
+    .hero p { color: var(--text-muted); font-size: 16px; max-width: 520px; margin-bottom: 28px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 42px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .stat-num { font-size: 24px; font-weight: 800; color: var(--navy); }
+    .stat-label { font-size: 12px; color: var(--text-muted); }
+    .hero-photo-wrap { position: relative; text-align: center; }
+    .hero-photo { width: 100%; max-width: 390px; aspect-ratio: 1 / 1; border-radius: 20px; box-shadow: 0 20px 40px rgba(7, 48, 66, 0.15); border: 4px solid #fff; object-fit: cover; background: #cbd5e1; }
+    .float-badge { position: absolute; bottom: 20px; left: 10px; background: var(--navy); color: #fff; padding: 12px 16px; border-radius: 12px; font-size: 13px; text-align: left; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+    .float-badge strong { color: var(--green); display: block; }
+
+    /* Companies Strip */
+    .companies { padding: 28px 0; border-bottom: 1px solid var(--border); background: #fff; }
+    .companies-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .companies-title { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+    .company-logos { display: flex; gap: 32px; flex-wrap: wrap; font-weight: 700; color: #64748b; font-size: 16px; }
+
+    /* Sections */
+    section { padding: 76px 0; }
+    .sec-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 16px; }
+    .sec-tag { font-size: 12px; font-weight: 700; color: var(--green-dark); text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 6px; }
+    .sec-title { font-size: 32px; font-weight: 800; color: var(--navy); }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: 0.2s; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(7, 48, 66, 0.08); border-color: var(--green); }
+    .s-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(61, 220, 132, 0.16); color: var(--navy); display: grid; place-items: center; font-weight: 800; font-size: 20px; margin-bottom: 18px; }
+    .service-card h3 { font-size: 18px; color: var(--navy); margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-muted); margin-bottom: 14px; }
+    .service-card .tags { font-size: 12px; font-weight: 600; color: var(--green-dark); }
+
+    /* Portfolio */
+    .portfolio-bg { background: var(--bg-light); }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .project-card { background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column; }
+    .project-banner { height: 140px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-banner span { font-size: 11px; background: rgba(61, 220, 132, 0.2); color: var(--green); padding: 4px 10px; border-radius: 20px; width: fit-content; font-weight: 600; }
+    .project-banner h4 { font-size: 20px; }
+    .project-body { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .project-body p { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+    .project-link { font-size: 13px; font-weight: 700; color: var(--navy); display: inline-flex; align-items: center; gap: 6px; }
+    .project-link:hover { color: var(--green-dark); }
+
+    /* Process */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .step-card { padding: 24px; border-radius: 14px; border: 1px solid var(--border); }
+    .step-num { width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: var(--green); font-weight: 800; display: grid; place-items: center; margin-bottom: 16px; }
+    .step-card h3 { font-size: 17px; color: var(--navy); margin-bottom: 8px; }
+    .step-card p { font-size: 13px; color: var(--text-muted); }
+
+    /* Testimonials */
+    .testimonials-bg { background: var(--bg-light); }
+    .test-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .test-card { background: #fff; padding: 28px; border-radius: 14px; border: 1px solid var(--border); }
+    .stars { color: #f59e0b; margin-bottom: 12px; font-size: 16px; }
+    .test-card p { font-size: 15px; color: var(--text-main); font-style: italic; margin-bottom: 18px; }
+    .test-author { font-weight: 700; color: var(--navy); font-size: 14px; }
+    .test-role { font-size: 12px; color: var(--text-muted); }
+
+    /* CTA & Footer */
+    .cta-banner { background: var(--navy); color: #fff; padding: 60px 0; }
+    .cta-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .cta-inner h2 { font-size: 32px; margin-bottom: 8px; }
+    .cta-inner p { color: #cbd5e1; }
+    footer { background: #041e2a; color: #94a3b8; padding: 36px 0; font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+
+    /* Modal */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(7,48,66,0.7); place-items: center; z-index: 200; padding: 20px; }
+    .modal.open { display: grid; }
+    .modal-box { background: #fff; max-width: 440px; width: 100%; border-radius: 16px; padding: 28px; position: relative; }
+    .modal-close { position: absolute; top: 16px; right: 18px; font-size: 22px; cursor: pointer; border: none; background: none; }
+    .contact-item { padding: 12px; background: var(--bg-light); border-radius: 8px; margin-top: 12px; font-size: 14px; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .services-grid, .projects-grid, .process-grid, .test-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <div class="topbar-left">
+        <span>ANDROID DEVELOPMENT</span>
+        <a href="#contact" class="topbar-cta" onclick="openModal(event)">CONTACT ME &rarr;</a>
+        <span>Clean Code. Reliable Apps. Result-Driven.</span>
+      </div>
+      <div class="topbar-right">
+        <a href="#contact" onclick="openModal(event)">LinkedIn</a>
+        <a href="mailto:kiryl.ivanov@gmail.com">Email</a>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">
+        <div class="logo-badge">KI</div>
+        <div>KirillIvanov<span>ANDROID DEVELOPER</span></div>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#process">Process</a>
+        <a href="#testimonials">Recommendations</a>
+      </nav>
+      <button class="btn btn-green" onclick="openModal(event)">Hire Me</button>
+    </div>
+  </header>
+
+  <section class="hero" id="about">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">KOTLIN &bull; JETPACK COMPOSE &bull; CLEAN ARCHITECTURE</div>
+        <h1>Turning Your App Ideas <span>Into Reality</span></h1>
+        <p>I'm Kirill Ivanov, a Senior Android Developer based in Vilnius, Lithuania with 6+ years of commercial experience building high-load mobile apps across logistics, cloud telecom, and BLE/IoT domains.</p>
+        <div class="hero-btns">
+          <button class="btn btn-green" onclick="openModal(event)">Hire Me &rarr;</button>
+          <a href="#portfolio" class="btn btn-outline">View My Work</a>
+        </div>
+        <div class="stats">
+          <div><div class="stat-num">6+</div><div class="stat-label">Years Experience</div></div>
+          <div><div class="stat-num">6+</div><div class="stat-label">Production Apps</div></div>
+          <div><div class="stat-num">4</div><div class="stat-label">Google Play Releases</div></div>
+          <div><div class="stat-num">EU</div><div class="stat-label">Blue Card Holder</div></div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img src="avatar.jpg" alt="Kirill Ivanov — Android Developer" class="hero-photo" />
+        <div class="float-badge">
+          <strong>Vilnius, Lithuania</strong>
+          Open to Senior Android Roles &amp; B2B
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="companies">
+    <div class="container companies-inner">
+      <div class="companies-title">Companies &amp; Products<br>I've Worked With</div>
+      <div class="company-logos">
+        <span>Fleethand</span>
+        <span>Godel Technologies</span>
+        <span>CircleLoop</span>
+        <span>iTechArt</span>
+        <span>Mobitee</span>
+        <span>Altoros</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">My Expertise</div>
+          <h2 class="sec-title">What I Can Do For You</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="s-icon">01</div>
+          <h3>Native Android Development</h3>
+          <p>Building fast, reliable, and scalable Android applications from scratch or maintaining complex production codebases.</p>
+          <div class="tags">Kotlin &bull; Java &bull; Android SDK &bull; Gradle</div>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">02</div>
+          <h3>Modern UI &amp; Architecture</h3>
+          <p>Designing responsive, state-driven user interfaces with clean separation of concerns and modular architecture.</p>
+          <div class="tags">Jetpack Compose &bull; XML &bull; MVVM / MVI &bull; Clean Architecture</div>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">03</div>
+          <h3>BLE, IoT &amp; Hardware SDKs</h3>
+          <p>Seamless communication with smart devices, industrial sensors, wearables, and real-time telemetry streams.</p>
+          <div class="tags">Bluetooth Low Energy &bull; Watch API &bull; Sensors</div>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">04</div>
+          <h3>Navigation &amp; Vision SDKs</h3>
+          <p>Integrating third-party navigation engines, OCR text recognition, and barcode/VIN scanning workflows.</p>
+          <div class="tags">ML Kit OCR &bull; Navigation SDKs &bull; Smart Fueling</div>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">05</div>
+          <h3>Async &amp; Offline-First Data</h3>
+          <p>Reliable background synchronization, WebSocket stability, and local caching for unstable network conditions.</p>
+          <div class="tags">Coroutines &bull; Flow &bull; Retrofit &bull; Room &bull; SQLite</div>
+        </div>
+        <div class="service-card">
+          <div class="s-icon">06</div>
+          <h3>Stability &amp; Release Optimization</h3>
+          <p>Diagnosing production crashes in obfuscated builds, configuring ProGuard/R8 rules, and improving crash-free rates.</p>
+          <div class="tags">ProGuard / R8 &bull; Crashlytics &bull; Dagger / Hilt / Koin</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-bg" id="portfolio">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Featured Work</div>
+          <h2 class="sec-title">My Latest Projects</h2>
+        </div>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-banner">
+            <span>B2B Logistics &bull; Fleethand</span>
+            <h4>Fleethand Driver</h4>
+          </div>
+          <div class="project-body">
+            <p>Integrated ML Kit OCR &amp; VIN barcode scanning, stabilized backend socket pings, improved navigation SDK features, and built contactless smart fueling (CircleK, Shell, Viada, CRT).</p>
+            <span class="project-link">Vilnius, Lithuania &bull; 2023–2026</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-banner">
+            <span>Cloud Telecom &bull; Godel</span>
+            <h4>CircleLoop</h4>
+          </div>
+          <div class="project-body">
+            <p>Resolved obfuscated release crashes via ProGuard/R8, contributed to feature modularization, and developed core profile &amp; settings flows for a UK cloud phone system.</p>
+            <span class="project-link">Google Play: com.circleloop</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-banner">
+            <span>Healthcare IoT &bull; iTechArt</span>
+            <h4>DoseSmart</h4>
+          </div>
+          <div class="project-body">
+            <p>Developed Android companion features for BLE-enabled smart pill bottles, implementing timely medication reminders and resilient BLE reconnection logic.</p>
+            <span class="project-link">Google Play: com.mydosesmart</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-banner">
+            <span>BLE Sports Analytics &bull; Mobitee</span>
+            <h4>PIQ Golf</h4>
+          </div>
+          <div class="project-body">
+            <p>Consumed real-time sensor telemetry via external SDK and smartwatch Watch API, delivering live shot visualization on golf courses and automatic hole scoring.</p>
+            <span class="project-link">Google Play: com.piq.golfapp</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-banner">
+            <span>Industrial IoT &bull; Altoros</span>
+            <h4>Masterlink</h4>
+          </div>
+          <div class="project-body">
+            <p>Built reliable Bluetooth communication, custom binary data parsing, and error handling for industrial measurement devices.</p>
+            <span class="project-link">Google Play: com.elitas.masterlink</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-banner">
+            <span>Entertainment App &bull; iTechArt</span>
+            <h4>MovieDb</h4>
+          </div>
+          <div class="project-body">
+            <p>Searchable online movie catalog featuring user authorization, genre &amp; release date range filtering, ratings, and clean REST API integration.</p>
+            <span class="project-link">Kotlin / Java &bull; REST API</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">How I Work</div>
+          <h2 class="sec-title">A Simple Process For Great Results</h2>
+        </div>
+      </div>
+      <div class="process-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Discuss &amp; Architect</h3>
+          <p>Analyze product requirements, edge cases, and choose a scalable MVVM/MVI Clean Architecture setup.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Build Clean UI</h3>
+          <p>Implement responsive, state-driven screens with Jetpack Compose or XML following Material guidelines.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Integrate APIs &amp; BLE</h3>
+          <p>Connect REST/Socket backends, offline Room storage, and third-party hardware or navigation SDKs.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3>Optimize &amp; Launch</h3>
+          <p>Configure ProGuard/R8, verify stability with Crashlytics, and deliver a smooth Google Play release.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-bg" id="testimonials">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">Recommendations</div>
+          <h2 class="sec-title">What Colleagues Say</h2>
+        </div>
+      </div>
+      <div class="test-grid">
+        <div class="test-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;Kiryl is professional, he is always proactive and motivated, it was a pleasure to work with him. He is a great team member, his desire to develop and improve himself and the product pushes and motivates other team members.&rdquo;</p>
+          <div class="test-author">Mikhail Kantsavoi</div>
+          <div class="test-role">Colleague Recommendation &bull; LinkedIn</div>
+        </div>
+        <div class="test-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>&ldquo;Strong ownership over complex BLE integrations, release stability, and modular Android architecture. Always delivers clean, maintainable Kotlin code on schedule.&rdquo;</p>
+          <div class="test-author">Engineering Leadership Feedback</div>
+          <div class="test-role">Logistics &amp; Cloud Telecom Teams</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner" id="contact">
+    <div class="container cta-inner">
+      <div>
+        <h2>Ready to Build Your Next Android App?</h2>
+        <p>Available for Senior Android Developer roles and B2B consulting in Vilnius or remote across the EU.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button class="btn btn-green" onclick="openModal(event)">Hire Me Now &rarr;</button>
+        <button class="btn btn-outline" onclick="openModal(event)">Contact Details</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>&copy; 2026 Kirill Ivanov — Android Developer (Kotlin). Vilnius, Lithuania.</div>
+      <div>Email: kiryl.ivanov@gmail.com | Phone: +370 663 68 617</div>
+    </div>
+  </footer>
+
+  <div class="modal" id="contactModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 style="color:var(--navy); margin-bottom:8px;">Get in Touch</h3>
+      <p style="font-size:14px; color:var(--text-muted);">Reach out directly via email, phone, or LinkedIn:</p>
+      <div class="contact-item"><strong>Email:</strong> <a href="mailto:kiryl.ivanov@gmail.com">kiryl.ivanov@gmail.com</a></div>
+      <div class="contact-item"><strong>Phone / WhatsApp:</strong> <a href="tel:+37066368617">+370 663 68 617</a></div>
+      <div class="contact-item"><strong>LinkedIn:</strong> linkedin.com/in/kiryl-ivanou</div>
+      <div class="contact-item"><strong>Location:</strong> Vilnius, Lithuania (EU Blue Card)</div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(e) {
+      if (e) e.preventDefault();
+      document.getElementById('contactModal').classList.add('open');
+    }
+    function closeModal() {
+      document.getElementById('contactModal').classList.remove('open');
+    }
+    window.onclick = function(e) {
+      if (e.target === document.getElementById('contactModal')) closeModal();
+    }
+  </script>
+</body>
+</html>
